@@ -110,7 +110,6 @@ exports.deleteProduct =
       );
 
       await Product.findByIdAndRemove(req.params.id);
-      return res.send("Ok");
     } catch (err) {
       console.log(err);
       return res
