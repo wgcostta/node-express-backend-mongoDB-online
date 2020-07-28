@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const productRoute = require("./src/route/product-route");
 const morgan = require("morgan");
 const app = express();
-const cors = require("cors");
 
 app.use(morgan("dev"));
 app.use(bodyParser.json());
@@ -16,7 +15,12 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
-  next();
+
+  if ("OPTIONS" == req.method) {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
 });
 
 app.use("/products", productRoute);
