@@ -99,7 +99,8 @@ exports.deleteProduct =
   ("/:id",
   async (req, res) => {
     try {
-      return await Product.findByIdAndRemove(req.params.id);
+      await Product.findByIdAndRemove(req.params.id);
+      return res.send();
     } catch (err) {
       console.log(err);
       return res
