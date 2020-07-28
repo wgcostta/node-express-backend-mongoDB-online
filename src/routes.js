@@ -1,9 +1,9 @@
 const express = require("express");
 const routes = express.Router();
 //const user = require("./app/controllers/userController");
-const project = require("./app/controller/productController");
+const product = require("./app/controller/productController");
 //const authMiddleware = require("./app/middlewares/auth");
-const authController = require("./app/controller/authController");
+//const authController = require("./app/controller/authController");
 
 //routes.post("/cadastro", user.create);
 //routes.get("/cadastro", user.index);
@@ -14,6 +14,6 @@ const authController = require("./app/controller/authController");
 //routes.post("/reset-password", authController.resetPassword);
 
 //routes.use(authMiddleware);
-routes.get("/", project.test);
+//routes.get("/", product.get);
 
 module.exports = routes;
