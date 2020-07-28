@@ -3,12 +3,11 @@ const bodyParser = require("body-parser");
 const productRoute = require("./src/route/product-route");
 const morgan = require("morgan");
 const app = express();
+const cors = require("cors");
 
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
-//require("./src/app/controller/index")(app);
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -21,6 +20,7 @@ app.use((req, res, next) => {
     res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
     return res.status(200).send({});
   }
+  app.use(cors());
   next();
 });
 
