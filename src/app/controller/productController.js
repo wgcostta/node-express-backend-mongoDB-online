@@ -99,17 +99,7 @@ exports.deleteProduct =
   ("/:id",
   async (req, res) => {
     try {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header(
-        "Access-Control-Allow-Methods",
-        "GET,HEAD,OPTIONS,POST,PUT,DELETE,PATCH"
-      );
-      res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-      );
-
-      await Product.findByIdAndRemove(req.params.id);
+      return await Product.findByIdAndRemove(req.params.id);
     } catch (err) {
       console.log(err);
       return res
