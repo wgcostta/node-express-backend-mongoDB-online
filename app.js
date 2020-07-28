@@ -11,17 +11,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
   res.header(
-    "Access-Control-Allow-Header",
-    "Access-Control-Allow-Headers, Origin, X-Requested-With, Content-Type, Accept, Authorization, XMLHttpRequest, Access-Control-Request-Method, Access-Control-Request-Headers"
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
-
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-    return res.status(200).send({});
-  }
-  app.use(cors());
   next();
 });
 
